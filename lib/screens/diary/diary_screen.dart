@@ -1,10 +1,19 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:impludehack/containers/Diary/chatbox.dart';
 import 'package:impludehack/screens/diary/select_diary_screen.dart';
+
+class EnvVariables {
+  static const platform = const MethodChannel('com.example.impludehack/env');
+
+  static Future<String?> get openaiApiKey async {
+    return await platform.invokeMethod('getOpenAiApiKey');
+  }
+}
 
 class DiaryScreen extends StatefulWidget {
   const DiaryScreen({super.key});
@@ -148,11 +157,20 @@ class _DiaryScreenState extends State<DiaryScreen> {
 }
 
 class OpenAiApi {
-  final String apiKey =
-      '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'; // Replace with your API Key
+  String? apiKey;
+
+  // Initialize the API Key
+  Future<void> initializeApiKey() async {
+    apiKey = await EnvVariables.openaiApiKey;
+  }
 
   Future<Map<String, dynamic>> chatCompletion(
       List<Map<String, dynamic>> messages) async {
+    // Make sure the API Key is initialized
+    if (apiKey == null) {
+      await initializeApiKey();
+    }
+
     final url = "https://api.openai.com/v1/chat/completions";
 
     final response = await http.post(

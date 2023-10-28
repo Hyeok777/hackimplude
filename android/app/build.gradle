@@ -49,6 +49,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        buildConfigField 'String', 'OPENAI_API_KEY', OPENAI_API_KEY
     }
 
     buildTypes {
