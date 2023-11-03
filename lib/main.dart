@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impludehack/screens/diary/diary_screen.dart';
+import 'package:impludehack/provider/challenge_prov.dart';
+import 'package:impludehack/screens/weekChallenge/week_challenge_screen.dart';
+import 'package:provider/provider.dart';
 import 'screens/main_screen.dart';
 
 void main() {
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // 처음 runApp에 쓰는 위젯은 MaterialApp을 한번 감싸줍시다
       // 안쓰면 크롬창에서 아래처럼 무서운 빨간색 노란색 오류나요
-      home: DiaryScreen(),
+      home: ChangeNotifierProvider(
+        create: ((BuildContext context) => ChallengeProv()),
+        child: WeekChallengeScreen(),
+      ),
       // 다른 위젯 하나
     );
   }

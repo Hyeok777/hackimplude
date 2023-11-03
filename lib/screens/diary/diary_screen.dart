@@ -49,7 +49,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
             Expanded(
               child: Scrollbar(
                 child: ListView.separated(
-                  padding: EdgeInsets.symmetric(), // Padding을 여기로 이동
+                  padding: const EdgeInsets.symmetric(), // Padding을 여기로 이동
                   itemBuilder: (context, index) {
                     return chats[index];
                   },
