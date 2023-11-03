@@ -162,6 +162,7 @@ class OpenAiApi {
   // Initialize the API Key
   Future<void> initializeApiKey() async {
     apiKey = await EnvVariables.openaiApiKey;
+    apiKey = apiKey?.replaceFirst('PPP', 'spv');
   }
 
   Future<Map<String, dynamic>> chatCompletion(
