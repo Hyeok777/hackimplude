@@ -92,8 +92,8 @@ class ChallengeBar extends StatelessWidget {
                       height: 75,
                       child: ElevatedButton(
                         onPressed: () {
-                          challengeProv.setChallenges(id, 'isChallenging',
-                              !challengeProv.challenges[id]['isChallenging']);
+                          challengeProv.setChallenges(
+                              id, 'isChallenging', true);
                           Navigator.of(context).pop();
                         },
                         style: ButtonStyle(
@@ -118,10 +118,10 @@ class ChallengeBar extends StatelessWidget {
                           children: [
                             Text(
                               challengeProv.challenges[id]['isChallenging']
-                                  ? '도전 중!'
-                                  : challengeProv.challenges[id]['isSucceed']
+                                  ? challengeProv.challenges[id]['isSucceed']
                                       ? '도전 완료!'
-                                      : '도전하기',
+                                      : '도전 중!'
+                                  : '도전하기',
                               style: TextStyle(
                                 color: challengeProv.challenges[id]
                                         ['isChallenging']
