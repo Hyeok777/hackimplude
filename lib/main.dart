@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       // 안쓰면 크롬창에서 아래처럼 무서운 빨간색 노란색 오류나요
       home: ChangeNotifierProvider(
         create: ((BuildContext context) => ChallengeProv()),
-        child: Home(),
+        child: WeekChallengeScreen(),
       ),
       // 다른 위젯 하나
     );
