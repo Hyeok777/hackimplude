@@ -6,7 +6,7 @@ import 'challenge_bar.dart';
 class ChallengeCard extends StatelessWidget {
   final int id;
 
-  ChallengeCard({
+  const ChallengeCard({
     super.key,
     required this.id,
   });

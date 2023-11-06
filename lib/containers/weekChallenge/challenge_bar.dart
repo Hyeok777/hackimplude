@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 class ChallengeBar extends StatelessWidget {
   final int id;
 
-  ChallengeBar({
+  const ChallengeBar({
     super.key,
     required this.id,
   });

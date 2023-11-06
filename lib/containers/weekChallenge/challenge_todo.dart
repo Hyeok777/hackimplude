@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class ChallengeTodo extends StatelessWidget {
   final int id;
 
-  ChallengeTodo({
+  const ChallengeTodo({
     super.key,
     required this.id,
   });

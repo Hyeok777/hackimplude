@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:impludehack/containers/Diary/chatbox.dart';
-import 'package:impludehack/screens/diary/select_diary_screen.dart';
+import 'package:impludehack/screens/main_screen.dart';
 
 class EnvVariables {
   static const platform = const MethodChannel('com.example.impludehack/env');
@@ -33,7 +33,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       home: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +41,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
           children: [
             IconButton(
               onPressed: () {
-                Get.to(const SelectDiaryScreen());
+                Get.to(const NavigationBarApp());
               },
               icon: const Icon(
                 Icons.arrow_back_ios_new_outlined,

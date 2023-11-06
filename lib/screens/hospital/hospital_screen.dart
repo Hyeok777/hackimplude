@@ -116,7 +116,8 @@ class HospitalScreen extends StatelessWidget {
             Expanded(
               child: Scrollbar(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   child: ListView(
                     children: const [
                       HospitalInfo(

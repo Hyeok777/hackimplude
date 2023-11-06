@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:impludehack/containers/weekChallenge/challenge_bar.dart';
 import 'package:impludehack/containers/weekChallenge/challenge_card.dart';
-import 'package:impludehack/screens/weekChallenge/week_Challenge_screen.dart';
+import 'package:impludehack/screens/consulting/consulting_screen.dart';
+import 'package:impludehack/screens/weekChallenge/week_challenge_screen.dart';
 
 import 'package:provider/provider.dart';
 import '../../provider/challenge_prov.dart';
@@ -10,10 +11,11 @@ import '../../provider/challenge_prov.dart';
 class WeekChallengeShopScreen extends StatefulWidget {
   WeekChallengeShopScreen({super.key});
   @override
-  State<WeekChallengeShopScreen> createState() => _WeekChallengeShopScreen();
+  State<WeekChallengeShopScreen> createState() =>
+      _WeekChallengeShopScreenState();
 }
 
-class _WeekChallengeShopScreen extends State<WeekChallengeShopScreen> {
+class _WeekChallengeShopScreenState extends State<WeekChallengeShopScreen> {
   @override
   Widget build(BuildContext context) {
     var challengeProv = context.watch<ChallengeProv>();
@@ -32,6 +34,7 @@ class _WeekChallengeShopScreen extends State<WeekChallengeShopScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 20),
                     const Row(
                       children: [
                         Text(
@@ -44,22 +47,22 @@ class _WeekChallengeShopScreen extends State<WeekChallengeShopScreen> {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ChallengeCard(id: 4),
-                        ChallengeCard(id: 3),
+                        ChallengeCard(id: 2),
+                        ChallengeCard(id: 1),
                       ],
                     ),
                     const SizedBox(height: 12),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ChallengeCard(id: 9),
+                        ChallengeCard(id: 5),
                         ChallengeCard(id: 12),
                       ],
                     ),
-                    const SizedBox(height: 100),
+                    const SizedBox(height: 50),
                     const Text(
                       '이런 챌린지는 어때요?',
                       style: TextStyle(
@@ -96,7 +99,9 @@ class _WeekChallengeShopScreen extends State<WeekChallengeShopScreen> {
                   height: 75,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to(() => WeekChallengeScreen());
+                      Get.to(() => const ConsultingScreen(
+                            initMenu: 3,
+                          ));
                     },
                     style: ButtonStyle(
                       backgroundColor:
