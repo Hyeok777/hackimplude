@@ -5,10 +5,12 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:impludehack/containers/Diary/chatbox.dart';
+import 'package:impludehack/provider/diary_prov.dart';
 import 'package:impludehack/screens/main_screen.dart';
+import 'package:provider/provider.dart';
 
 class EnvVariables {
-  static const platform = const MethodChannel('com.example.impludehack/env');
+  static const platform = MethodChannel('com.example.impludehack/env');
 
   static Future<String?> get openaiApiKey async {
     return await platform.invokeMethod('getOpenAiApiKey');
@@ -23,9 +25,6 @@ class DiaryScreen extends StatefulWidget {
 }
 
 class _DiaryScreenState extends State<DiaryScreen> {
-  final List<ChatBox> chats = <ChatBox>[
-    const ChatBox(isUserSaying: false, message: "안녕하세요! 오늘은 어떤 일이 있었나요?")
-  ];
   final TextEditingController _controller = TextEditingController();
   String input = '';
   String _response = '';
@@ -33,32 +32,30 @@ class _DiaryScreenState extends State<DiaryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var diaryProv = context.watch<DiaryProv>();
+    List<ChatBox> chatBoxes = diaryProv.chats
+        .map((chat) => ChatBox(
+              isUserSaying: chat['isUserSaying'],
+              message: chat['message'],
+            ))
+        .toList();
     return MaterialApp(
       home: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              onPressed: () {
-                Get.to(const NavigationBarApp());
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios_new_outlined,
-                size: 30,
-              ),
-            ),
             Expanded(
               child: Scrollbar(
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(),
                   itemBuilder: (context, index) {
-                    return chats[index];
+                    return chatBoxes[index];
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(height: 0);
                   },
-                  itemCount: chats.length,
+                  itemCount: chatBoxes.length,
                 ),
               ),
             ),
@@ -119,12 +116,13 @@ class _DiaryScreenState extends State<DiaryScreen> {
   ];
 
   void sendMessage() {
+    final diaryProv = Provider.of<DiaryProv>(context, listen: false);
     if (_controller.text == '') return;
     if (_isLoading) return;
 
     setState(() {
-      chats.add(ChatBox(isUserSaying: true, message: _controller.text));
-      chats.add(const ChatBox(isUserSaying: false, message: '...'));
+      diaryProv.addChats(true, _controller.text);
+      diaryProv.addChats(false, '...');
       input = _controller.text;
       _controller.text = '';
     });
@@ -133,6 +131,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
   }
 
   Future<void> _queryChatbot() async {
+    final diaryProv = Provider.of<DiaryProv>(context, listen: false);
     setState(() {
       _isLoading = true;
     });
@@ -152,8 +151,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
     setState(() {
       _response = apiResponse['choices'][0]['message']['content'];
       _isLoading = false;
-      chats.removeLast();
-      chats.add(ChatBox(isUserSaying: false, message: _response));
+      diaryProv.removeLastChats();
+      diaryProv.addChats(false, _response);
     });
   }
 }

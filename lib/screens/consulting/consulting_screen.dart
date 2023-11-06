@@ -38,7 +38,7 @@ class _ConsultingScreenState extends State<ConsultingScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const SizedBox.shrink(),
+        leading: const SizedBox(height: 0),
         bottom: TabBar(
           controller: _tabController,
           tabs: [
