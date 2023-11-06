@@ -30,7 +30,15 @@ class ChatBox extends StatelessWidget {
               width: 55,
               height: 55,
               decoration: BoxDecoration(
-                color: (isUserSaying) ? Colors.red : Colors.blue,
+                image: (isUserSaying)
+                    ? const DecorationImage(
+                        image: AssetImage('asset/images/chatProfile/user.png'),
+                        fit: BoxFit.fill,
+                      )
+                    : const DecorationImage(
+                        image: AssetImage('asset/images/chatProfile/AI.png'),
+                        fit: BoxFit.fill,
+                      ),
                 borderRadius: BorderRadius.circular(5),
               ),
             ),

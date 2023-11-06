@@ -23,7 +23,9 @@ class DiaryScreen extends StatefulWidget {
 }
 
 class _DiaryScreenState extends State<DiaryScreen> {
-  final List<ChatBox> chats = <ChatBox>[];
+  final List<ChatBox> chats = <ChatBox>[
+    const ChatBox(isUserSaying: false, message: "안녕하세요! 오늘은 어떤 일이 있었나요?")
+  ];
   final TextEditingController _controller = TextEditingController();
   String input = '';
   String _response = '';
@@ -49,7 +51,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
             Expanded(
               child: Scrollbar(
                 child: ListView.separated(
-                  padding: const EdgeInsets.symmetric(), // Padding을 여기로 이동
+                  padding: const EdgeInsets.symmetric(),
                   itemBuilder: (context, index) {
                     return chats[index];
                   },
