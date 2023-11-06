@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:impludehack/containers/Diary/chatbox.dart';
 import 'package:impludehack/provider/diary_prov.dart';
-import 'package:impludehack/screens/main_screen.dart';
 import 'package:provider/provider.dart';
 
 class EnvVariables {
@@ -173,7 +171,7 @@ class OpenAiApi {
       await initializeApiKey();
     }
 
-    final url = "https://api.openai.com/v1/chat/completions";
+    const url = "https://api.openai.com/v1/chat/completions";
 
     final response = await http.post(
       Uri.parse(url),

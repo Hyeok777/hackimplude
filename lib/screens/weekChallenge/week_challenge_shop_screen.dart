@@ -3,13 +3,12 @@ import 'package:get/get.dart';
 import 'package:impludehack/containers/weekChallenge/challenge_bar.dart';
 import 'package:impludehack/containers/weekChallenge/challenge_card.dart';
 import 'package:impludehack/screens/consulting/consulting_screen.dart';
-import 'package:impludehack/screens/weekChallenge/week_challenge_screen.dart';
 
 import 'package:provider/provider.dart';
 import '../../provider/challenge_prov.dart';
 
 class WeekChallengeShopScreen extends StatefulWidget {
-  WeekChallengeShopScreen({super.key});
+  const WeekChallengeShopScreen({super.key});
   @override
   State<WeekChallengeShopScreen> createState() =>
       _WeekChallengeShopScreenState();
