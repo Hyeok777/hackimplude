@@ -194,8 +194,6 @@ class OpenAiApi {
     if (response.statusCode == 200) {
       return jsonDecode(utf8.decode(response.bodyBytes));
     } else {
-      print("Status Code: ${response.statusCode}");
-      print("Response Body: ${response.body}");
       throw Exception("Failed to fetch response from OpenAI API");
     }
   }

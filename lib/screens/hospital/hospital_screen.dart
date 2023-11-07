@@ -85,7 +85,7 @@ class HospitalScreen extends StatelessWidget {
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
                                   ),
-                                ), //TODO not yet!
+                                ),
                               ),
                             ],
                           ),

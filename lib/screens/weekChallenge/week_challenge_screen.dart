@@ -96,7 +96,7 @@ class _WeekChallengeScreenState extends State<WeekChallengeScreen> {
                   height: 75,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to(() => WeekChallengeShopScreen());
+                      Get.to(() => const WeekChallengeShopScreen());
                     },
                     style: ButtonStyle(
                       backgroundColor:

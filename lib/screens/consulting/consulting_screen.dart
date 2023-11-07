@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:impludehack/screens/depressionTest/Test1.dart';
 import 'package:impludehack/screens/depressionTest/Test2.dart';
 import 'package:impludehack/screens/diary/diary_screen.dart';
 import 'package:impludehack/screens/weekChallenge/week_Challenge_screen.dart';
@@ -51,11 +50,11 @@ class _ConsultingScreenState extends State<ConsultingScreen>
       ),
       body: IndexedStack(
         index: _tabController.index,
-        children: [
-          const Test2(),
-          const DiaryScreen(),
-          Container(), // Replace with your actual screens
-          const WeekChallengeScreen(),
+        children: const [
+          Test2(),
+          DiaryScreen(),
+          SizedBox(height: 10),
+          WeekChallengeScreen(),
         ],
       ),
     );
