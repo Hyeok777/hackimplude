@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:impludehack/containers/Hospital/hospital_info.dart';
 import 'package:impludehack/provider/challenge_prov.dart';
+import 'package:impludehack/provider/diary_prov.dart';
 import 'package:impludehack/screens/calender/Calender1.dart';
 import 'package:impludehack/screens/calender/Calender2.dart';
 import 'package:impludehack/screens/cheerup/cheerup_screen.dart';
@@ -15,9 +16,16 @@ import 'screens/main_screen.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ChallengeProv(),
-      child: MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ChallengeProv()),
+        ChangeNotifierProvider(create: (context) => DiaryProv()),
+        // 추가하고 싶은 다른 Provider들을 여기에 계속 추가하세요.
+      ],
+      child: MaterialApp(
+        home: MyApp(),
+        // 여기에 나머지 앱 설정을 계속 추가하세요.
+      ),
     ),
   );
 }
