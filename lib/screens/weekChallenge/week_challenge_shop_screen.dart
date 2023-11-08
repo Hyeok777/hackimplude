@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:impludehack/containers/weekChallenge/challenge_bar.dart';
 import 'package:impludehack/containers/weekChallenge/challenge_card.dart';
 import 'package:impludehack/screens/consulting/consulting_screen.dart';
+import 'package:impludehack/screens/main_screen.dart';
+import 'package:impludehack/screens/weekChallenge/week_challenge_screen.dart';
 
 import 'package:provider/provider.dart';
 import '../../provider/challenge_prov.dart';
@@ -112,10 +115,27 @@ class _WeekChallengeShopScreenState extends State<WeekChallengeShopScreen> {
                       ),
                       elevation: const MaterialStatePropertyAll(0.0),
                     ),
-                    child: const Text(
-                      '내 활동으로 돌아가기',
-                      style:
-                          TextStyle(fontSize: 23, fontWeight: FontWeight.w600),
+                    child: GestureDetector(
+                      child: Container(
+                        width: 332, // 원하는 너비 설정
+                        height: 73, // 원하는 높이 설정
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blueAccent,
+                        ),
+                        child: Center(
+                          child: Text(
+                            '메인 화면으로',
+                            style: TextStyle(fontSize: 25, color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (c) => NavigationExample()));
+                      },
                     ),
                   ),
                 ),

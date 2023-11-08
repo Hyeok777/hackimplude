@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impludehack/screens/cheerup/cheerup_screen.dart';
 import 'package:impludehack/screens/depressionTest/Test2.dart';
 import 'package:impludehack/screens/diary/diary_screen.dart';
 import 'package:impludehack/screens/findme/findme_screen.dart';
@@ -38,14 +39,18 @@ class _ConsultingScreenState extends State<ConsultingScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         leading: const SizedBox(height: 0),
         bottom: TabBar(
           controller: _tabController,
+          unselectedLabelColor: Colors.white,
+          indicatorColor: Colors.white,
           tabs: [
             customTab(icon: Icons.medication_liquid, text: '우울감 진단'),
             customTab(icon: Icons.chat_outlined, text: '털어놓기'),
             customTab(icon: Icons.person_pin_rounded, text: '나를 찾아서'),
             customTab(icon: Icons.flag, text: '일일 챌린지'),
+            customTab(icon: Icons.menu_book, text: '너를 응원해'),
           ],
         ),
       ),
@@ -56,6 +61,7 @@ class _ConsultingScreenState extends State<ConsultingScreen>
           DiaryScreen(),
           BoxColumn(),
           WeekChallengeScreen(),
+          LikeButtonDemo(),
         ],
       ),
     );
