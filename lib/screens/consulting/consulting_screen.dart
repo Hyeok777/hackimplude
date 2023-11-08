@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impludehack/screens/depressionTest/Test2.dart';
 import 'package:impludehack/screens/diary/diary_screen.dart';
+import 'package:impludehack/screens/findme/findme_screen.dart';
 import 'package:impludehack/screens/weekChallenge/week_Challenge_screen.dart';
 
 class ConsultingScreen extends StatefulWidget {
@@ -50,10 +51,10 @@ class _ConsultingScreenState extends State<ConsultingScreen>
       ),
       body: IndexedStack(
         index: _tabController.index,
-        children: const [
+        children: [
           Test2(),
           DiaryScreen(),
-          SizedBox(height: 10),
+          BoxColumn(),
           WeekChallengeScreen(),
         ],
       ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:impludehack/screens/consulting/consulting_screen.dart';
+import 'package:impludehack/screens/diary/diary_screen.dart';
+import 'package:impludehack/screens/findme/findme_screen.dart';
+import 'package:impludehack/screens/hospital/hospital_screen.dart';
 
 void main() => runApp(const NavigationBarApp());
 
@@ -22,6 +26,20 @@ class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior =
       NavigationDestinationLabelBehavior.alwaysShow;
+  static List<Widget> pages = <Widget>[
+    HospitalScreen(),
+    ConsultingScreen(initMenu: 0),
+    DiaryScreen(),
+    SizedBox(
+      height: 10,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +79,7 @@ class _NavigationExampleState extends State<NavigationExample> {
           ),
         ],
       ),
-      body: Center(),
+      body: pages[currentPageIndex],
     );
   }
 }

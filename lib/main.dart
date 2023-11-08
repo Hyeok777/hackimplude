@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:impludehack/containers/Hospital/hospital_info.dart';
 import 'package:impludehack/provider/challenge_prov.dart';
+import 'package:impludehack/screens/findme/findme_screen.dart';
 import 'package:impludehack/screens/hospital/hospital_screen.dart';
 import 'package:impludehack/screens/weekChallenge/week_Challenge_screen.dart';
 import 'package:impludehack/screens/weekChallenge/week_challenge_shop_screen.dart';
@@ -12,7 +13,7 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => ChallengeProv(),
-      child: HospitalScreen(),
+      child: MyApp(),
     ),
   );
 }
